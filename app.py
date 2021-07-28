@@ -75,8 +75,8 @@ app.layout = html.Div(style={
 ])
 
 predictors = { "treatment_cost": 0, "wait_time": 0 }
-style_recommended  = { "color": "green" }
-style_not_recommended = { "color": "red" }
+style_recommended  = { "color": "green",  "font-weight": "bold", "font-size": "larger" }
+style_not_recommended = { "color": "red", "font-weight": "bold", "font-size": "larger"  }
 
 @app.callback(
     dash.dependencies.Output('slider-output-container', 'children'),
@@ -117,4 +117,4 @@ def predict(input):
     return int(1 / (1 + exp(-score)))
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(host="0.0.0.0", debug=True)
