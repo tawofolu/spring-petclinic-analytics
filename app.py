@@ -2,6 +2,7 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import base64
+import dash_bootstrap_components as dbc
 
 app = dash.Dash()
 
@@ -17,64 +18,79 @@ app.layout = html.Div(style={
     'margin': '0',
     'height' : '600px'
 },children=[
-    html.H1(
-        children='Petclinic Analytics',
-        style={
-            'textAlign': 'center',
-            'background': '#34302d',
-            'color': '#6db33f',
-            'margin': '0'
-        }
-    ),
-    #html.Img(src='data:image/png;base64,{}'.format(pets_encoded_image)),
-    html.Div(children='Real-time recommendation engine for Petclinics', style={
-        'textAlign': 'center',
-        'fontFamily': 'cursive',
-        'background': '#34302d',
-        'color': '#6db33f' 
-    }),
-    html.Label(children='Treatment Cost',style={'margin-top': '10px', 'padding-left': '5px'}),
-    html.Div(style={
-            'margin-top' : '10px',
-            'padding' : '10px',
-            'width': '50%'
-        }, children=[
-        dcc.Slider(
-            id='treatment-cost-slider',
-            min=20,
-            max=150,
-            step=1,
-            value=100,
-            marks={20:"$20",150:"$150"}
-        ),
-        #html.Img(src='data:image/png;base64,{}'.format(treatment_cost_encoded_image)),
-        html.Br(),
-        html.Div(id='slider-output-container', style={
-            'color': '#996600',
-            'margin-bottom': '10px'
-        })
-    ]),
-    html.Label(children='Wait Times',style={'padding-left': '5px'}),
-    html.Div(style={
-            'margin-top' : '10px',
-            'padding' : '5px',
-            'width': '50%'
-        }, children=[
-        dcc.Slider(
-            id='wait-time-slider',
-            min=0,
-            max=60,
-            step=5,
-            value=15,
-            marks={0:"0 minutes",60:"60 minutes"}
-        ),
-        #html.Img(src='data:image/png;base64,{}'.format(wait_time_encoded_image)),
-        html.Br(),
-        html.Div(id='slider-output-container-2', style={
-            'color': '#996600'
-        }),
-        html.Br(),
-        html.Div(id='recommendation-score')
+    dbc.Row([
+        dbc.Col([
+            dbc.Card(
+                dbc.CardBody([
+                    html.H1(
+                        children='Petclinic Analytics',
+                        style={
+                            'textAlign': 'center',
+                            'background': '#34302d',
+                            'color': '#6db33f',
+                            'margin': '0'
+                        }
+                    ),
+                    #html.Img(src='data:image/png;base64,{}'.format(pets_encoded_image)),
+                    html.Div(children='Real-time recommendation engine for Petclinics', style={
+                        'textAlign': 'center',
+                        'fontFamily': 'cursive',
+                        'background': '#34302d',
+                        'color': '#6db33f' 
+                    }),
+                    html.Label(children='Treatment Cost',style={'margin-top': '10px', 'padding-left': '5px'}),
+                    html.Div(style={
+                            'margin-top' : '10px',
+                            'padding' : '10px',
+                            'width': '50%'
+                        }, children=[
+                        dcc.Slider(
+                            id='treatment-cost-slider',
+                            min=20,
+                            max=150,
+                            step=1,
+                            value=100,
+                            marks={20:"$20",150:"$150"}
+                        ),
+                        #html.Img(src='data:image/png;base64,{}'.format(treatment_cost_encoded_image)),
+                        html.Br(),
+                        html.Div(id='slider-output-container', style={
+                            'color': '#996600',
+                            'margin-bottom': '10px'
+                        })
+                    ]),
+                    html.Label(children='Wait Times',style={'padding-left': '5px'}),
+                    html.Div(style={
+                            'margin-top' : '10px',
+                            'padding' : '5px',
+                            'width': '50%'
+                        }, children=[
+                        dcc.Slider(
+                            id='wait-time-slider',
+                            min=0,
+                            max=60,
+                            step=5,
+                            value=15,
+                            marks={0:"0 minutes",60:"60 minutes"}
+                        ),
+                        #html.Img(src='data:image/png;base64,{}'.format(wait_time_encoded_image)),
+                        html.Br(),
+                        html.Div(id='slider-output-container-2', style={
+                            'color': '#996600'
+                        }),
+                    ])
+                ])
+            )]
+        ), 
+        dbc.Col([
+            dbc.Card(
+                dbc.CardBody([
+                    html.Br(),
+                    html.Br(),
+                    html.Div(id='recommendation-score')
+                ])
+            )]
+        )    
     ])
 ])
 
