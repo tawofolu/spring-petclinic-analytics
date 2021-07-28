@@ -8,4 +8,4 @@ kubectl delete deploy petclinic-app-dashboard --ignore-not-found=true
 kubectl create deployment petclinic-app-dashboard --image=oawofolu/spring-petclinic-dashboard:latest
 kubectl port-forward deploy/petclinic-app-dashboard 8050
 
-kubectl expose deployment/petclinic-app-dashboard --name petclinic-app-dashboard --port=8050 --type=ClusterIP
+#kubectl expose deployment/petclinic-app-dashboard --name petclinic-app-dashboard --port=8050 --type=ClusterIP
