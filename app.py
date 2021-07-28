@@ -48,6 +48,7 @@ app.layout = html.Div(style={
             marks={20:"$20",150:"$150"}
         ),
         #html.Img(src='data:image/png;base64,{}'.format(treatment_cost_encoded_image)),
+        html.Br(),
         html.Div(id='slider-output-container', style={
             'color': '#996600',
             'margin-bottom': '10px'
@@ -61,13 +62,14 @@ app.layout = html.Div(style={
         }, children=[
         dcc.Slider(
             id='wait-time-slider',
-            min=15,
-            max=180,
+            min=0,
+            max=60,
             step=5,
             value=15,
             marks={15:"15 minutes",180:"180 minutes"}
         ),
         #html.Img(src='data:image/png;base64,{}'.format(wait_time_encoded_image)),
+        html.Br(),
         html.Div(id='slider-output-container-2', style={
             'color': '#996600'
         }),
@@ -84,14 +86,12 @@ style_not_recommended = { "color": "red", "font-weight": "bold", "font-size": "l
     dash.dependencies.Output('slider-output-container', 'children'),
     [dash.dependencies.Input('treatment-cost-slider', 'value')])
 def update_treatment_cost(value):
-    predictors["treatment_cost"] = value
     return '${}'.format(value)
 
 @app.callback(
     dash.dependencies.Output('slider-output-container-2', 'children'),
     [dash.dependencies.Input('wait-time-slider', 'value')])
 def update_treatment_cost(value):
-    predictors["wait_time"] = value
     return '{} minutes'.format(value)
 
 @app.callback(
