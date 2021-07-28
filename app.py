@@ -66,7 +66,7 @@ app.layout = html.Div(style={
             max=60,
             step=5,
             value=15,
-            marks={15:"15 minutes",180:"180 minutes"}
+            marks={0:"0 minutes",60:"60 minutes"}
         ),
         #html.Img(src='data:image/png;base64,{}'.format(wait_time_encoded_image)),
         html.Br(),
