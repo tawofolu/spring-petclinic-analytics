@@ -44,7 +44,8 @@ app.layout = html.Div(style={
             min=20,
             max=150,
             step=1,
-            value=100
+            value=100,
+            marks={20:"$20",150:"$150"}
         ),
         #html.Img(src='data:image/png;base64,{}'.format(treatment_cost_encoded_image)),
         html.Div(id='slider-output-container', style={
@@ -63,7 +64,8 @@ app.layout = html.Div(style={
             min=15,
             max=180,
             step=5,
-            value=15
+            value=15,
+            marks={15:"15 minutes",180:"180 minutes"}
         ),
         #html.Img(src='data:image/png;base64,{}'.format(wait_time_encoded_image)),
         html.Div(id='slider-output-container-2', style={
